@@ -1,4 +1,4 @@
-@import url('//use.fontawesome.com/releases/v5.7.2/css/all.css');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
@@ -7,6 +7,7 @@
     --black: hsl(0, 0%, 5%);
     --sans-serif: 'Nunito', Arial, sans-serif;
     --serif: 'Playfair Display', Times, serif;
+    --breakpoint-medium: 50rem;
 }
 
 *, *::before, *::after {
@@ -15,13 +16,12 @@
     padding:0;
 }
 
-*:focus {
+*:focus-visible {
     outline: 2px dashed var(--color-primary);
     outline-offset: 3px;
 }
 
 body {
-    overflow-x: hidden;
     color: var(--black);
     font-family: var(--sans-serif);
 }
@@ -33,41 +33,70 @@ p {
 /* BLOCKS */
 
 main {
-    display:flex;
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2rem;
+    align-items: center;
+    height:100vh;
 }
 
 .contact-info {
-    display:flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end; */
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(4rem, 1fr));
+
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    height:100%;
     padding:2rem;
-    padding-right:8rem;
-    height:100vh;
-    width: 600px;
     color: var(--deepblue);
     background: var(--color-primary);
 }
 
-.main-content {
-    position:relative;
-    padding-left: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width:80%;
-}
-
-.main-content img {
-    position:absolute;
-    max-width: 400px;
+.home-picture {
+    grid-column: 3 / span 3;
+    grid-row: 1;
+    width: 100%;
     height: calc(100vh - 4rem);
-    top: 2rem;
-    left: -6rem;
     object-position: center;
     object-fit:cover;
     z-index:2;
     box-shadow: 0 0 50px 5px rgba(0,0,0,.125);
     filter:sepia();
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    grid-column: 6 / 10;
+
+    margin-left: 3rem;
+    height:100%;
+}
+
+@media (max-width:55rem) {
+    .main {
+        grid-auto-flow:dense;
+    }
+    .contact-info {
+        grid-column: 1 / 11;
+        grid-row: 3;
+        gap: 2rem;
+        justify-content: center;
+    }
+    .home-picture {
+        grid-column: 1 / 11;
+        height: unset;
+    }
+
+    .main-content {
+        grid-column: 3 / 10;
+        margin:0;
+    }
 }
 
 /* NAV */
@@ -174,6 +203,35 @@ main {
 
 /* TYPOGRAPHY */
 
+.contact-email {
+    grid-column: 1;
+}
+.contact-phone {
+    grid-column: 2;
+}
+.contact-social {
+    grid-column: 3;
+}
+
+@media (max-width: 30rem), (min-width: 55rem) {
+    .contact-info {
+        gap: 0;
+    }
+
+    .contact-email {
+        grid-row: -3 / -4;
+        grid-column: unset;
+    }
+    .contact-phone {
+        grid-row: -2 / -3;
+        grid-column: unset;        
+    }
+    .contact-social {
+        grid-row: -1 / -2;
+        grid-column: unset;
+    }   
+}
+
 .contact-info p {
     font-size: .8rem;
 }
@@ -209,7 +267,7 @@ main {
     content:'';
     position:absolute;
     top: .6em;
-    left: calc(-100px - 3rem);
+    left: -8rem;
     height: 3px;
     width: 80px;
     background-color: var(--color-primary);
@@ -230,17 +288,21 @@ main {
 /* COMPONENTS */
 
 .main-page-links {
-    display: flex;
-    gap:2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap:1rem;
     margin-top: 2rem;
 }
 
 .btn {
     padding: 1em 2em;
-    border-radius:50px;
+    max-width:max-content;
     font-weight:bold;
     text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    border-radius:50px;
     transition: .3s ease-out;
 }
 
@@ -251,7 +313,7 @@ main {
 }
 
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus-visible {
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
     background-color:white;
@@ -264,7 +326,7 @@ main {
 }
 
 .btn-secondary:hover,
-.btn-secondary:focus {
+.btn-secondary:focus-visible {
     color: white;
     background-color: var(--deepblue); 
 }
