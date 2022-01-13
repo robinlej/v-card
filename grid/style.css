@@ -7,6 +7,7 @@
     --black: hsl(0, 0%, 5%);
     --sans-serif: 'Nunito', Arial, sans-serif;
     --serif: 'Playfair Display', Times, serif;
+    --breakpoint-medium: 50rem;
 }
 
 *, *::before, *::after {
@@ -15,7 +16,7 @@
     padding:0;
 }
 
-*:focus {
+*:focus-visible {
     outline: 2px dashed var(--color-primary);
     outline-offset: 3px;
 }
@@ -73,6 +74,25 @@ main {
 
     margin-left: 3rem;
     height:100%;
+}
+
+@media (max-width:50rem) {
+    .main {
+        grid-auto-flow:dense;
+    }
+    .contact-info {
+        grid-column: 1 / 11;
+        grid-row: 3;
+    }
+    .home-picture {
+        grid-column: 1 / 11;
+        height: unset;
+    }
+
+    .main-content {
+        grid-column: 3 / 10;
+        margin:0;
+    }
 }
 
 /* NAV */
@@ -235,9 +255,15 @@ main {
 /* COMPONENTS */
 
 .main-page-links {
-    display: flex;
+    display: grid;
     gap:2rem;
     margin-top: 2rem;
+}
+
+@media (min-width: 50rem) {
+    .main-page-links {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .btn {
@@ -256,7 +282,7 @@ main {
 }
 
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus-visible {
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
     background-color:white;
@@ -269,7 +295,7 @@ main {
 }
 
 .btn-secondary:hover,
-.btn-secondary:focus {
+.btn-secondary:focus-visible {
     color: white;
     background-color: var(--deepblue); 
 }
