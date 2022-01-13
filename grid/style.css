@@ -301,6 +301,7 @@ main {
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
+    letter-spacing: 2px;
     border-radius:50px;
     transition: .3s ease-out;
 }
