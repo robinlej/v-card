@@ -154,12 +154,10 @@ main {
     content:'';
     position:absolute;
     left:0;
-    width: 100%;
+    width: 23px;
     height: 100%;
     background-color: var(--black);
-    transition: transform .3s ease-out, 
-        top .3s ease-out, 
-        background-color .3s ease-out;
+    transition: .3s ease-out;
 }
 
 .hamburger-btn-icon::before {
@@ -168,6 +166,25 @@ main {
 
 .hamburger-btn-icon::after {
     bottom: -8px;
+}
+
+.nav-header:not(.active) .hamburger-btn:hover .hamburger-btn-icon {
+    animation: grow-and-shrink .5s .166s infinite alternate ease-in-out;
+} 
+.nav-header:not(.active) .hamburger-btn:hover .hamburger-btn-icon::before { 
+    animation: grow-and-shrink .5s infinite alternate ease-in-out; 
+} 
+.nav-header:not(.active) .hamburger-btn:hover .hamburger-btn-icon::after { 
+    animation: grow-and-shrink .5s .33s infinite alternate ease-in-out;
+}
+
+@keyframes grow-and-shrink {
+    0% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(.7);
+    }
 }
 
 .nav-header.active .hamburger-btn-icon::before {
@@ -286,6 +303,10 @@ main {
 }
 
 /* COMPONENTS */
+
+/* .rljn-logo {
+    max-width: 80px;
+} */
 
 .main-page-links {
     display: grid;
