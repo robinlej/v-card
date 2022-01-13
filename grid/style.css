@@ -1,4 +1,4 @@
-@import url('//use.fontawesome.com/releases/v5.7.2/css/all.css');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
@@ -213,7 +213,7 @@ main {
     grid-column: 3;
 }
 
-@media (max-width: 30rem) or (min-width: 55rem) {
+@media (max-width: 30rem), (min-width: 55rem) {
     .contact-info {
         gap: 0;
     }
