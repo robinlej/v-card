@@ -14,14 +14,6 @@ From a template, let's recreate a one-page website to showcase my work and have 
 
 ## Responsiveness
 
-**Desktop**
-
-![Desktop](v-card-desktop.gif)
-
-**Medium sizes**
-
-![Medium sizes](v-card-medium.gif)
-
-**Smartphone**
-
-![Smartphone size](v-card-smartphone.gif)
+**Desktop** | **Medium sizes** | **Smartphone**
+:---: | :---: | :---:
+![Desktop](v-card-desktop.gif) | ![Medium sizes](v-card-medium.gif) | ![Smartphone size](v-card-smartphone.gif)
